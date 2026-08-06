@@ -22,7 +22,8 @@ function increaseScore(studentName) {
     console.log(`${studentName} score has been increased by two and now the student'score is ${students[studentName].score}`)
 }
 
-function decreaseScore(studentName) {
+function decreaseScore(studentName) { 
+    
     if (!students[studentName]) {
         console.log(`Error!: ${studentName} does not exist`)
         return;
