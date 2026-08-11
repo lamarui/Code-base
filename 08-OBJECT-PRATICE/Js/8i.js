@@ -1,5 +1,5 @@
  
- const score = {
+ const score = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     losses: 0
 }
@@ -19,5 +19,7 @@ if (guess === result) {
 } else {
     score.losses++;
 }
+
+localStorage.setItem('score', JSON.stringify(score))
  console.log(score)
  }

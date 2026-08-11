@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+}
+
+
+.header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+
+.header h1{
+    color: #111827;
+}
+
+.header p {
+    color: #6b7280;
+    margin-top: 5px
+}
+.add-button{
+    margin-right: 10px;
+    width: 120px;
+    background-color: #2563eB;
+    border: none;
+
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 7px;
+}
+
+.student-list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+}
+.student-card{
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    
+    height: 100px;
+    border-radius: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+.student-control{
+    display: flex;
+    gap: 8px;
+}
+
+.student-control button{
+    padding: 8px 12px;
+    border: none;
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.student-control button:hover{
+    background-color: #e2e8f0;
+}
+
+.student-info h3{
+    color: #111827;
+    margin-bottom: 5px;
+}
+
+.student-info p{
+    color: #6b7289;
+}
