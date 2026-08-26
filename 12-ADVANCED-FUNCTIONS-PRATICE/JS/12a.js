@@ -13,7 +13,7 @@ runTwice(function () {console.log('12b')
 })
 
 runTwice(add)
-
+function updateButton() {
 const buttonElement = document.querySelector('.basic-button');
 console.log(buttonElement)
 buttonElement.addEventListener('click', () => {
@@ -23,6 +23,7 @@ buttonElement.addEventListener('click', () => {
     buttonElement.innerHTML = 'Finished!';
 }, 1000)
 });
+}
 
 const cartElement = document.querySelector('.add-to-cart');
 
