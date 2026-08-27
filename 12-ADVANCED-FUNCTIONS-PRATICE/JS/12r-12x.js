@@ -12,10 +12,24 @@ function resetScore() {
   score.ties = 0;
   localStorage.removeItem('score');
     updateScoreElement();
+
+    
 }
 
 document.querySelector('.js-reset-score-button').addEventListener('click', () => {
-  resetScore();
+  const message = document.querySelector('.reset-info')
+  message.innerHTML = `
+      <h3>Are you sure you want to reset the score?</h3>
+      <button class="button yes-button">Yes</button>
+      <button class="button no-button">No</button>`
+  document.querySelector('.yes-button').addEventListener('click', () => {
+    resetScore();
+    message.innerHTML = '';
+});
+
+document.querySelector('.no-button').addEventListener('click', () => {
+  message.innerHTML = ''
+})
 });
 
 
@@ -78,6 +92,8 @@ document.body.addEventListener('keydown', (event) => {
     playGame('scissors');
   } else if (event.key === 'a') {
     autoPlayy();
+  } else if (event.key === 'Backspace') {
+    resetScore();
   }
 });
 
@@ -153,4 +169,4 @@ function pickComputerMove() {
   }
 
   return computerMove;
-}
+};
