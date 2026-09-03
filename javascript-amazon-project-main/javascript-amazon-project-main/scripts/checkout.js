@@ -8,7 +8,13 @@ let cartSummaryHTML = '';
  const today = dayjs();
  const deliveryDate = today.add(7, 'days');
  console.log(deliveryDate.format('dddd, MMMM D'));
-cart.forEach((cartItem) => {
+
+
+function renderOrderSummary() {
+  
+
+
+ cart.forEach((cartItem) => {
 const productId = cartItem.productId;
 
 let matchingProduct;
@@ -23,8 +29,8 @@ const deliveryOptionId = cartItem.deliveryOptionId;
 let deliveryOption;
 
 deliveryOptions.forEach((option) => {
-  if (option.id === deliveryOption.id) {
-    deliveryOption = option
+  if (option.id === deliveryOptionId) {
+    deliveryOption = option;
 }
 });
 const today = dayjs();
@@ -92,7 +98,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
     : `$${formatCurrency(deliveryOption.priceCents)} - `; 
    
     const isChecked = deliveryOption.id === 
-    cartItem.deliveryOption.Id;
+    cartItem.deliveryOptionId;
    
     html += `
     <div class="delivery-option js-delivery-option" data-product-id= "${matchingProduct.id}" 
@@ -131,7 +137,11 @@ document.querySelectorAll('.js-delivery-option').forEach((element) => {
   element.addEventListener('click', () => {
     const { productId, deliveryOptionId} = element.dataset;
     updateDeliveryOption(productId, deliveryOptionId);
+    renderOrderSummary();
   })
 }
 
 )
+}
+
+renderOrderSummary();
