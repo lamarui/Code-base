@@ -22,7 +22,7 @@ export function getDeliveryOption(deliveryOptionId) {
 
   deliveryOptions.forEach((option) => {
     if (option.id === deliveryOptionId) {
-      matchingDeliveryOption = option;
+      deliveryOption = option;
     }
   });
 
