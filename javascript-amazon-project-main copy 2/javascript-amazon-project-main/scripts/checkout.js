@@ -149,7 +149,8 @@ saveElement.forEach((link) => {
     const newQuantity = Number(inputElement.value);
 
   
-    updateCartQuantity(productId, newQuantity);
+    updateQuantity(productId, newQuantity);
+    updateCartQuantity()
   })
 }
 )
