@@ -153,7 +153,7 @@ saveElement.forEach((link) => {
 
     const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`
     );
-   quantityLabel.innerHTML = newQuantity;
+   quantityLabel.textContent = newQuantity;
     updateCartQuantity()
   })
 }
