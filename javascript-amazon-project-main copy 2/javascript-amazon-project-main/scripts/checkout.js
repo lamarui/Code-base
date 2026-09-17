@@ -136,46 +136,43 @@ updateElement.forEach((link) => {
   });
 });
 
-const saveElement = document.querySelectorAll('.js-save-link');
+function saveQuantity(productId) {
+  const inputElement = document.querySelector(
+    `.js-quantity-input-${productId}`
+  );
 
-saveElement.forEach((link) => {
-  link.addEventListener('click', () => {
-    const productId = link.dataset.productId;
-  
-    function saveQuantity(productId) {
-    const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
+  const newQuantity = Number(inputElement.value);
 
-    const newQuantity = Number(inputElement.value);
-
-    if (newQuantity < 0 || newQuantity >= 1000) {
-      alert('Quantity must be at least 0 and less than 1000');
-  return;
-}
-
-    updateQuantity(productId, newQuantity);
-
-    const container = document.querySelector(`.js-cart-item-container-${productId}`)
-    container.classList.remove('is-editing-quantity');
-
-    const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`
-    );
-   quantityLabel.textContent = newQuantity;
-    updateCartQuantity()
+  if (!Number.isInteger(newQuantity) || newQuantity < 1 || newQuantity >= 1000) {
+    alert('Quantity must be a whole number from 1 to 999.');
+    return;
   }
 
-  document.querySelector('.js-save-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      saveQuantity(link.dataset.productId);
-    });
-  });
+  updateQuantity(productId, newQuantity);
 
-  document.querySelectorAll('.js-quantity-input').forEach((inputElement) => {
+  const container = document.querySelector(
+    `.js-cart-item-container-${productId}`
+  );
+  container.classList.remove('is-editing-quantity');
+
+  document.querySelector(
+    `.js-quantity-label-${productId}`
+  ).textContent = newQuantity;
+
+  updateCartQuantity();
+}
+
+document.querySelectorAll('.js-save-link').forEach((link) => {
+  link.addEventListener('click', () => {
+    saveQuantity(link.dataset.productId);
+  });
+});
+
+document.querySelectorAll('.js-quantity-input').forEach((inputElement) => {
   inputElement.addEventListener('keydown', (event) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
+      event.preventDefault();
       saveQuantity(inputElement.dataset.productId);
     }
   });
 });
-  })
-});
-
