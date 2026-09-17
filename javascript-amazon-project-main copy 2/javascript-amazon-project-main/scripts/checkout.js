@@ -148,7 +148,10 @@ saveElement.forEach((link) => {
 
     const newQuantity = Number(inputElement.value);
 
-  
+    if (!Number.isInteger(newQuantity) || newQuantity < 1 || newQuantity >= 1000) {
+  return;
+}
+
     updateQuantity(productId, newQuantity);
 
     const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`
