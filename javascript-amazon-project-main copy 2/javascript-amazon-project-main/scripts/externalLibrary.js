@@ -2,6 +2,7 @@
  import { isWeekend } from './isWeekend.js';
  const today = dayjs();
  const date = today.add(5, 'days');
+const  dateSixDaysLater = dayjs().add(6, 'day');
  console.log(date.format('MMMM D'));
 
  const oneMonth = today.add(1, 'month');
@@ -15,6 +16,6 @@
 
 
  
-      date = dayjs().add(6, 'day');
+    
       console.log(date.format('dddd, MMMM D'));
       console.log(isWeekend(date));

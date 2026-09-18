@@ -4,6 +4,3 @@ export  function isWeekend(date) {
         return dayOfWeek === 'Saturday' || dayOfWeek === 'Sunday';
     } 
    
- 
-
- console.log(isWeekend(today));
