@@ -1,5 +1,5 @@
  import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
-
+ import { isWeekend } from './isWeekend.js';
  const today = dayjs();
  const date = today.add(5, 'days');
  console.log(date.format('MMMM D'));
@@ -12,12 +12,9 @@
 
  console.log(`Day of Weeks ${today.format('dddd')}`)
  
- function isWeekend(date) {
-    const today = dayjs();
-    if (date.format('dddd') === 'Saturday' || date.format('ddd') === 'Sunday' ) {
-        return `The day is ${date.format('ddd')}`
-    } 
-    return
- }
 
- console.log(isWeekend(today));
+
+ 
+      date = dayjs().add(6, 'day');
+      console.log(date.format('dddd, MMMM D'));
+      console.log(isWeekend(date));
