@@ -1,5 +1,5 @@
  import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
- import { isWeekend } from './isWeekend.js';
+ import isSatSun from './isWeekend.js'
  const today = dayjs();
  const date = today.add(5, 'days');
 const  dateSixDaysLater = dayjs().add(6, 'day');
@@ -18,4 +18,4 @@ const  dateSixDaysLater = dayjs().add(6, 'day');
  
     
       console.log(date.format('dddd, MMMM D'));
-      console.log(isWeekend(date));
+      console.log(isSatSun(date));
