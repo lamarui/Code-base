@@ -38,7 +38,7 @@ return `$${formatCurrency(this.priceCents )}`
   }
 }
 
-class Clothing extends Product 
+class Clothing extends Product {}
   
  export const products = [
   {
