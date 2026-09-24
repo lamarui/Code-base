@@ -63,9 +63,22 @@ export let products = [];
 
 function loadProducts() {
   const xhr = new XMLHttpRequest();
+  
+  xhr.addEventListener('load', () => {
+    JSON.parse(xhr.response).map ((productDetails) => {
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails)
+   }
+   return new Product (productDetails);
+});
+
+console.log(products);
+  });
   xhr.open('GET', 'https://supersimplebackend.dev/products');
-  xhr.send
+  xhr.send();
 }
+loadProducts();
+
 const date = new Date();
 console.log(date);
 console.log(date.toLocaleTimeString());
