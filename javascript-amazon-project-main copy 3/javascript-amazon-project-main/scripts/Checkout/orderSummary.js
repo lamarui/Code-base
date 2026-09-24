@@ -1,5 +1,6 @@
 import {cart,removeFromCart,updateDeliveryOption} from '../../data/cart.js';
-import { renderCheckoutHeader } from './checkoutHeader.js';
+import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
+
 import { getProduct } from '../../data/products.js';
 
 import {
@@ -51,7 +52,7 @@ export function renderOrderSummary() {
             </div>
 
             <div class="product-price">
-              ${formatCurrency(matchingProduct.getPrice())}
+              ${matchingProduct.getPrice()}
             </div>
 
             <div class="product-quantity">
