@@ -1,5 +1,5 @@
 import {cart,removeFromCart,updateDeliveryOption} from '../../data/cart.js';
-import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
+import { deliveryOptions, getDeliveryOption, calculateDeliveryDate } from '../../data/deliveryOptions.js';
 
 import { getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
@@ -18,14 +18,7 @@ export function renderOrderSummary() {
     const deliveryOptionId = cartItem.deliveryOptionId;
     const deliveryOption = getDeliveryOption(deliveryOptionId)
 
-    const today = dayjs();
-
-    const deliveryDate = today.add(
-    deliveryOption.deliveryDays,
-      'days'
-    );
-
-    const dateString = deliveryDate.format('dddd, MMMM D');
+    calculateDeliveryDate();
 
     cartSummaryHTML += `
       <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
@@ -127,15 +120,7 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
   let html = '';
 
   deliveryOptions.forEach((deliveryOption) => {
-    const today = dayjs();
-
-    const deliveryDate = today.add(
-      deliveryOption.deliveryDays,
-      'days'
-    );
-
-    const dateString =
-      deliveryDate.format('dddd, MMMM D');
+    calculateDeliveryDate();
 
     const priceString =
       deliveryOption.priceCents === 0

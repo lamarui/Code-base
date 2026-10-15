@@ -60,6 +60,32 @@ class Clothing extends Product {
 }
 
 export let products = [];
+export function loadProductsFetch() {
+  const promise = fetch(
+    'https://supersimplebackend.dev/products').then((response) => {
+  return response.json();
+  
+}).then((productsData) => {
+  products = JSON.parse(xhr.response).map ((productDetails) => {
+  if (productDetails.type === 'clothing') {
+    return new Clothing(productDetails)
+   }
+   return new Product (productDetails);
+});
+
+console.log('load products');
+}).catch(() => {
+  console.log('Unexpected error. Please try again later.')
+}
+
+)
+
+return promise;
+}
+
+// loadProductsFetch().then(() => {
+//   console.log('next step');
+// });
 
 export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
@@ -70,15 +96,20 @@ export function loadProducts(fun) {
     return new Clothing(productDetails)
    }
    return new Product (productDetails);
+   });
+
+   console.log('load products')
+
+   fun();
 });
 
-console.log('load products');
-
-  fun();
-  });
+xhr.addEventListener('error', (error) => {
+  console.log('Unexpected error. Please try again later.');
+});
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
+loadProducts()
 
 const date = new Date();
 console.log(date);
